@@ -1,44 +1,53 @@
 <template>
-  <div class="c-blog">
-    <div class="c-blog__header">
-      <div class="c-blog__header__title">{{ title }}</div>
+  <div class="container">
+    <div class="c-blog">
+        <div class="c-blog__header">
+        <div class="c-blog__header__title">{{ title }}</div>
+        </div>
+        <div class="c-blog__main">
+        <div class="c-blog__main__content">
+            <section class="c-blog__main__content__section" v-html="caption">
+            </section>
+
+            <section class="c-blog__main__content__section">
+                <picture>
+                    <source srcset="../assets/26226_travel-photos.svg" media="(min-width: 768px)">
+                    <img srcset="../assets/26226_travel-photos.svg" alt="…">
+                </picture>
+            </section>
+
+            <section class="c-blog__main__content__section"
+                v-for="(cont, index) in content"
+                :key="index"
+            >
+                <h4>{{ `${index + 1}. ${cont.title}` }}</h4>
+                <div v-html="cont.description"></div>
+            </section>
+        </div>
+        <div class="c-blog__main__aside">
+            <section class="c-blog__main__aside__section">
+                <button class="button" @click="showModal()">Send Me The Tips</button>
+            </section>
+        </div>
+        </div>
+
+        <footer></footer>
+
+        <Modal v-show="modal" @close="modal = false" />
     </div>
-    <div class="c-blog__main">
-      <div class="c-blog__main__content">
-        <section class="c-blog__main__content__section" v-html="caption">
-        </section>
-
-        <section class="c-blog__main__content__section">
-            <picture>
-                <source srcset="../assets/26226_travel-photos.svg" media="(min-width: 768px)">
-                <img srcset="../assets/26226_travel-photos.svg" alt="…">
-            </picture>
-        </section>
-
-        <section class="c-blog__main__content__section"
-            v-for="(cont, index) in content"
-            :key="index"
-        >
-            <h4>{{ `${index + 1}. ${cont.title}` }}</h4>
-            <div v-html="cont.description"></div>
-        </section>
-      </div>
-      <div class="c-blog__main__aside">
-        <section class="c-blog__main__aside__section">
-            <button class="button" @click="modal = true">Send Me The Tips</button>
-        </section>
-      </div>
-    </div>
-
-    <footer>Footer</footer>
-
   </div>
 </template>
 
 <script>
+import Modal from '../components/Modal.vue';
+
 
 export default {
   name: 'home',
+
+  components: {
+    Modal,
+  },
 
   data() {
     return {
@@ -47,29 +56,47 @@ export default {
         content: [
             {
                 title: 'Research Your Destination To Find The Best Photo Opportunities',
-                description: '<p>Before your trip, I recommend researching the destination to find the most interesting photo opportunties</p><p>I always research the location I\'m travelling to. I do this extensively and obsessively!</p><p>So, what kind of research can you do?</p><p>First, you could serach for photos that other people have taken at the locations you\'re planning to visit.</p>',
+                description: '<p>Before your trip, I recommend researching the destination to find the most interesting photo opportunties</p><p>I always research the location I\'m travelling to. I do this extensively and obsessively!</p><p>It\'s up to you how much research you do. But you should definitely spend a bit of time looking up some great places to take pictures.</p><p>So, what kind of research can you do?</p><p>First, you could serach for photos that other people have taken at the locations you\'re planning to visit.</p><p>Search on Instagram on Google to get an idea of the kinds of photos people take there.</p>',
             },
             {
                 title: 'Capture Your Journey To Tell The Complete Story Of Your Travels',
-                description: '<p>Travel photography isn\'t just about photographing the destination.</p><p>For a more complete photograph story, capture your journey to and from the location you\'re visiting</p><p>If you are travelling by plane, try to get a window sear where you have a view of the wing o propeller.</p><p>And of course, you could capture a beautiful aerial view of clouds, mountains, or city lights as you\'re flying above.</p>',
+                description: '<p>Travel photography isn\'t just about photographing the destination.</p><p>For a more complete photograph story, capture your journey to and from the location you\'re visiting.</p><p>If you \'re travelling by plane, try to get a window sear where you have a view of the wing or propeller.</p><p>And of course, you could capture a beautiful aerial view of clouds, mountains, or city lights as you\'re flying above.</p><p>Your journey will often involve several different types of transport. And they all offer great phot opportunities.</p><p>Whether you \'re traveling by car, taxi, bus, train, boat, or plane, try to capture some interesting photos.</p>',
             },
         ],
         modal: false,
     };
   },
+  methods: {
+      showModal() {
+          console.log("sdfsdfsdf")
+          this.modal = true
+          console.log(this.moda)
+      }
+  }
 };
 </script>
 
 <style lang="scss">
+body {
+    font-family: Lato;
+    font-style: normal;
+    color: #101010;
+    width: 100vw;
+    margin: 0;
+    // overflow: hidden;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1000px;
+}
 
 .c-blog {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     padding: 75px 50px 0px 50px;
-    font-family: Lato;
-    font-style: normal;
-    color: #101010;
+
 
     &__header {
         max-width: 560px;
@@ -96,7 +123,6 @@ export default {
 
     &__main {
         display: flex;
-
         &__content {
             max-width: 560px;
             padding: 35px 0;
@@ -118,8 +144,7 @@ export default {
             }
         }
         &__aside {
-            width: 270px;
-            margin: 0 70px;
+            margin-left: 70px;
             h4 {
                 padding: 8px 0;
                 font-weight: bold;
@@ -128,9 +153,9 @@ export default {
 
             }
             &__section {
-                width: 100%;
+                max-width: 270px;
                 background: #F5F5F5;
-                min-height: 700px;
+                min-height: 640px;
                 justify-content: center;
                 padding: 50px 25px 0 25px;
 
@@ -150,7 +175,7 @@ export default {
                     background: linear-gradient(90deg, #AC519C 0.83%, #E5424F 100%);
                     box-shadow: 0px 3px 10px rgba(104, 104, 104, 0.5);
                     &:hover {
-                        background: linear-gradient(90deg, #B678AA 1.29%, #E28990 100%);
+                        background: linear-gradient(90deg, #B678AA 1.29%, #E28990 100%);                        
                     }
                 }
             }
@@ -158,22 +183,57 @@ export default {
     }
 }
 
-.section {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 24px;
-
-    color: #101010;
-}
-
 
 footer {
-  grid-column: span 3;
-  padding: 30px;
+  padding-bottom: 138px;
   text-align: center;
   font-size: 1.4em;
   color: white;
 }
+
+@media screen and (max-width: 576px) {
+
+    .container {
+        width: 100vw;
+    }
+
+    .c-blog {
+        padding: 0px 18px 0px 17px;
+        &__header {
+            &__title {
+                padding: 25px 0;
+            }
+        }
+        &__main {
+            display: block;
+            &__content {
+                padding-top: 12px;
+                &__section {
+                    img {
+                        width: 100vw;
+                        margin: 0 -18px;
+                    }
+                }
+            }
+            &__aside {
+                margin: 0;
+                &__section {
+                    display: flex;
+                    width: 100%;
+                    max-width: calc(100% - 55px);
+                    min-height: 426px;
+                    padding: 34px 28.5px 0 28.5px;
+                    .button {
+                        margin: 0 auto;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        padding-bottom: 37px;
+    }
+}
+
 </style>
