@@ -71,9 +71,9 @@ export default {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.5);
+  background: rgb(38, 38, 38, 0.8);
+  mix-blend-mode: normal;
 
   &__close {
       float: right;
@@ -189,6 +189,7 @@ export default {
        }
        label {
           cursor: text;
+          user-select: none;
           text-align: left;
           padding-left: 11px;
           text-transform: none;

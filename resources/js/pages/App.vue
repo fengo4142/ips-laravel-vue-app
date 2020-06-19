@@ -2,7 +2,7 @@
   <div class="container">
     <div class="c-blog">
         <div class="c-blog__header">
-        <div class="c-blog__header__title">{{ title }}</div>
+            <h1>{{ title }}</h1>
         </div>
         <div class="c-blog__main">
         <div class="c-blog__main__content">
@@ -77,14 +77,6 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-    font-family: Lato;
-    font-style: normal;
-    color: #101010;
-    width: 100vw;
-    margin: 0;
-    // overflow: hidden;
-}
 
 .container {
     margin: 0 auto;
@@ -101,19 +93,20 @@ body {
     &__header {
         max-width: 560px;
 
-        &__title {
+        h1 {
             position: relative;
             padding: 16px 0;
             font-weight: bold;
             font-size: 26px;
             line-height: 31px;
+            margin: 0;
             z-index: 1;
             
             &:before {
                 content: " ";
                 background-image: linear-gradient(90deg, #AC519C 0.83%, #E5424F 100%);
                 width: 100%;
-                height: 1px;
+                height: 2px;
                 bottom: -1px;
                 position: absolute;
                 z-index: -1;
@@ -140,6 +133,10 @@ body {
                     font-weight: bold;
                     font-size: 18px;
                     line-height: 22px;
+                    color: #101010;
+                }
+                p {
+                    color: #666;
                 }
             }
         }
@@ -200,7 +197,7 @@ footer {
     .c-blog {
         padding: 0px 18px 0px 17px;
         &__header {
-            &__title {
+            h1 {
                 padding: 25px 0;
             }
         }
@@ -243,7 +240,7 @@ footer {
         padding: 0px 18px 0px 17px;
         &__header {
             margin: 0 auto 0 20px;
-            &__title {
+            h1 {
                 padding: 25px 0;
             }
         }
@@ -272,7 +269,7 @@ footer {
         padding: 0px 18px 0px 17px;
         &__header {
             margin: 0 auto 0 70px;
-            &__title {
+            h1 {
                 padding: 25px 0;
             }
         }
@@ -298,7 +295,7 @@ footer {
         max-width: 900px;
         margin: 0 auto;
         &__header {
-            &__title {
+            h1 {
                 padding: 25px 0;
             }
         }
