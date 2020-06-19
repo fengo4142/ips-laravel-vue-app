@@ -191,7 +191,7 @@ footer {
   color: white;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 640px) {
 
     .container {
         width: 100vw;
@@ -235,5 +235,79 @@ footer {
         padding-bottom: 37px;
     }
 }
+@media (min-width: 641px) and (max-width: 767px) {
+    .container {
+        width: 100vw;
+    }
+    .c-blog {
+        padding: 0px 18px 0px 17px;
+        &__header {
+            margin: 0 auto 0 20px;
+            &__title {
+                padding: 25px 0;
+            }
+        }
+        &__main {
+            display: block;
+            margin: 0 auto 0 20px;
+        
+            &__aside {
+                margin: 0;
+                &__section {
+                    display: flex;
+                    justify-content: center;
+                    min-height: 426px;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 940px) {
+    .container {
+        width: 100vw;
+    }
 
+    .c-blog {
+        padding: 0px 18px 0px 17px;
+        &__header {
+            margin: 0 auto 0 70px;
+            &__title {
+                padding: 25px 0;
+            }
+        }
+        &__main {
+            display: block;
+            margin: 0 auto 0 70px;
+        
+            &__aside {
+                margin: 0;
+                &__section {
+                    display: flex;
+                    justify-content: center;
+                    min-height: 426px;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 941px) and (max-width: 1024px) {
+    .c-blog {
+        padding: 0px 18px 0px 17px;
+        max-width: 900px;
+        margin: 0 auto;
+        &__header {
+            &__title {
+                padding: 25px 0;
+            }
+        }
+        &__main {
+            &__content {
+                padding-top: 12px;
+            }
+        }
+
+    }
+}
 </style>

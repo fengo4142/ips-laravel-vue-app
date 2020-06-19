@@ -247,7 +247,7 @@ label {
   color: #828282;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
   .c-modal {
 
     &__close {
@@ -276,6 +276,14 @@ label {
           margin-bottom: 15px;
         }
       }
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 911px) {
+  .c-modal {
+    &__content {
+      width: 80%;
     }
   }
 }
